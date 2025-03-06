@@ -4,3 +4,10 @@ services:
     image: 'hashicorp/consul'
     ports:
       - 8500:8500
+  mysql:
+    image: 'mysql:8.0.41'
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=wwb731219
+      - MYSQL_DATABASE=demo_proto
