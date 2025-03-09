@@ -14,6 +14,7 @@ import (
 	"github.com/wwbab/Go_mall/demo/demo_proto/biz/dal"
 	"github.com/wwbab/Go_mall/demo/demo_proto/conf"
 	"github.com/wwbab/Go_mall/demo/demo_proto/kitex_gen/pbapi/echoservice"
+	"github.com/wwbab/Go_mall/demo/demo_proto/middleware"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 )
@@ -40,7 +41,7 @@ func kitexInit() (opts []server.Option) {
 	if err != nil {
 		panic(err)
 	}
-	opts = append(opts, server.WithServiceAddr(addr))
+	opts = append(opts, server.WithServiceAddr(addr),server.WithMiddleware(middleware.Middleware))
 
 	// service info
 	opts = append(opts, server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{
